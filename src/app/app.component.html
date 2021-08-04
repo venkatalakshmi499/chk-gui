@@ -1,0 +1,15 @@
+<div id="background_header"></div>
+<div id="background_body"></div>
+<div id="chatContainer">
+  <app-sidebar
+    (conversationClicked)="onConversationSelected($event)"
+  ></app-sidebar>
+  <div id="chat">
+    <div id="chatPlaceholder" *ngIf="!conversation">
+      <h2>Keep your phone connected</h2>
+    </div>
+    <app-chat [conversation]="conversation" *ngIf="conversation"></app-chat>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

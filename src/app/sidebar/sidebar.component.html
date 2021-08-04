@@ -1,0 +1,60 @@
+<div id="sidebar">
+  <div id="sidebarHeader">
+    <div class="avatarContainer">
+      <img id="img1" src="../../assets/images/noPic.svg" alt="" />
+    </div>
+    <div class="actionsContainer">
+      <img src="../../assets/images/statusIcon.svg" alt="" />
+      <img src="../../assets/images/chatIcon.svg" alt="" />
+      <img src="../../assets/images/moreVertIcon.svg" alt="" />
+    </div>
+  </div>
+  <div id="searchBox">
+    <img width="13" id="img" src="../assets/images/searchicon.png" alt="" />
+    <input type="text" id="input" placeholder="Search or start the new chat" />
+  </div>
+  <div id="sidebarContent">
+    <!-- <div id="noConversations">All charts are archived</div> -->
+    <!-- <div class="conversation">
+      <div class="picture">
+        <img src="../../assets/images/noPic.svg" alt="" />
+      </div>
+      <div class="content">
+        <div class="conversationHeader">
+          <div class="name">Cat</div>
+          <div class="time">8:21 AM</div>
+        </div>
+        <div class="message">Good Morning!!</div>
+      </div>
+    </div> -->
+
+    <div
+      class="conversation"
+      *ngFor="let conversation of conversations"
+      (click)="conversationClicked.emit(conversation)"
+    >
+      <div class="picture">
+        <img src="../../assets/images/noPic.svg" alt="" />
+      </div>
+      <div class="content">
+        <div class="conversationHeader">
+          <div class="name">{{ conversation.name }}</div>
+          <div class="time">{{ conversation.time }}</div>
+        </div>
+        <div class="message">
+          <img
+            *ngIf="!conversation.latestMessageRead"
+            src="../../assets/images/doubleTick.svg"
+            alt=""
+          />
+          <img
+            *ngIf="conversation.latestMessageRead"
+            src="../../assets/images/doubleTickBlue.svg"
+            alt=""
+          />
+          {{ conversation.latestMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
